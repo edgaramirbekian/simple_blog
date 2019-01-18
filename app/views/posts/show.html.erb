@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>ID:</strong>
+  <%= @post.id %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
@@ -18,6 +23,11 @@
 <p>
   <strong>Field:</strong>
   <%= @post.field %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user.fname + ' ' + @post.user.lname %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

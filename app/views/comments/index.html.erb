@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Field</th>
       <th>User</th>
       <th>Post</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
+        <td><%= comment.id %></td>
         <td><%= comment.field %></td>
         <td><%= comment.user %></td>
         <td><%= comment.post %></td>

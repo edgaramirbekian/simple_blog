@@ -5,10 +5,12 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Title</th>
       <th>Category</th>
       <th>Date</th>
       <th>Field</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +18,12 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td><%= post.id %></td>
         <td><%= post.title %></td>
         <td><%= post.category %></td>
         <td><%= post.date %></td>
         <td><%= post.field %></td>
+        <td><%= post.user.fname + ' ' + post.user.lname %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
