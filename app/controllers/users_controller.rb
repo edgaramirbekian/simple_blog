@@ -6,12 +6,20 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_user.admin == true
+      @users = User.all
+    else
+      respond_to do |format|
+        format.html { redirect_to '/users/' + current_user.id.to_s, notice: "not allowed"}
+      end
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+    @user_all_posts = @user.posts.to_json
   end
 
   # GET /users/new
@@ -56,10 +64,17 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.admin == true
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to '/', notice: 'Not Allowed' }
+        format.json { render json: @post.errors, status: :error }
+      end
     end
   end
 
