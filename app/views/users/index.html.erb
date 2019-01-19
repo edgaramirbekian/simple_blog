@@ -18,15 +18,15 @@
         <td><%= user.id %></td>
         <td><%= user.fname %></td>
         <td><%= user.lname %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '|Show|', user %></td>
+        <td><%= link_to '|Edit|', edit_user_path(user) %></td>
+        <td><%= link_to '|Destroy|', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to 'Home', '/' %>
+<%= link_to '|Home|', '/' %>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to '|New User|', new_user_path %>
