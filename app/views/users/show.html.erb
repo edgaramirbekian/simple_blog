@@ -28,5 +28,6 @@
 
 <%= link_to '|Edit|', edit_user_path(@user) %> 
 <%= link_to '|Home|', '/' %>
-<%= link_to '|Delete Profile|', 'users#destroy'%>
+<%= link_to '|Create Post|', new_post_path %>
+<%= link_to '|Delete Profile|', user_path(current_user.id.to_s), {method: :delete} %>
 <%= link_to '|Back|', users_path %>
