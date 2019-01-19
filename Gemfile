@@ -33,8 +33,7 @@ gem 'devise'
 gem 'devise_token_auth'
 
 # add JSON library
-gem 'json'
-
+gem 'json', '~> 1.8', '>= 1.8.3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
