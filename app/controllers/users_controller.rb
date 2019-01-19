@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @users = User.all
     else
       respond_to do |format|
-        format.html { redirect_to '/users/' + current_user.id.to_s, notice: "not allowed"}
+        format.html { redirect_to '/users/' + current_user.id.to_s}
       end
     end
   end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    if current_user.admin == true
+    if current_user.id.to_s == params[:id] or current_user.admin == true
       @user.destroy
       respond_to do |format|
         format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
