@@ -10,6 +10,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
+    @comment.post_id = @post.id
+    @comment.user_id = current_user.id
   end
 
   # GET /posts/new
