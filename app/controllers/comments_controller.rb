@@ -23,19 +23,29 @@ class CommentsController < ApplicationController
 
   # POST /comments
   # POST /comments.json
+  # def create
   def create
-    @comment = Comment.new(comment_params)
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create(comment_params)
+    @comment.user_id = current_user.id #or whatever is you session name
+    if @comment.save
+      redirect_to @post
+    else
+      flash.now[:danger] = "error"
     end
   end
+  #   @comment = Comment.new(comment_params)
+
+  #   respond_to do |format|
+  #     if @comment.save
+  #       format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+  #       format.json { render :show, status: :created, location: @comment }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @comment.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
