@@ -34,4 +34,5 @@
 <h2 class="subtitle is-5"><strong></strong> Comments <%= @post.comments.size %> </h2>
 <%= render partial: 'posts/comment', collection: @post.comments.reverse %>
 <%= render partial: 'comments/form' %> |
+<%= link_to 'Home', '/' %>
 <%= link_to 'Back', posts_path %>
