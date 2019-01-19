@@ -17,10 +17,15 @@
 
 <p>
   <strong>Posts:</strong>
-  <%= @user_all_posts %>
+  <% @user_all_posts.each do |x| %>
+    <br />
+    <%= link_to '|open post|', post_path(x['id'].to_s) %>
+    <%= x['title'] %>
+  <% end %>
+   
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Home', '/' %>
+<%= link_to '|Edit|', edit_user_path(@user) %> 
+<%= link_to '|Home|', '/' %>
 
-<%= link_to 'Back', users_path %>
+<%= link_to '|Back|', users_path %>
