@@ -20,10 +20,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_all_posts = JSON.parse(@user.posts.to_json)
-    @user_titles = []
-    # @user_all_posts.each do |x|
-    #   @user_titles.push(x["title"])
-    # end
   end
 
   # GET /users/new
