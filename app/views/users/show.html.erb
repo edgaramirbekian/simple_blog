@@ -20,6 +20,7 @@
   <% @user_all_posts.each do |x| %>
     <br />
     <%= link_to '|open post|', post_path(x['id'].to_s) %>
+    <%= link_to '|delete post|', post_path(x['id'].to_s), {method: :delete} %>
     <%= x['title'] %>
   <% end %>
    
@@ -27,5 +28,5 @@
 
 <%= link_to '|Edit|', edit_user_path(@user) %> 
 <%= link_to '|Home|', '/' %>
-
+<%= link_to '|Delete Profile|', 'users#destroy'%>
 <%= link_to '|Back|', users_path %>

@@ -61,7 +61,12 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    if current_user.admin == true
+    @user_all_posts = JSON.parse(current_user.posts.to_json)
+    @user_all_posts_ids = []
+    @user_all_posts.each do |one_post|
+      @user_all_posts_ids.push(one_post['id'])
+    end
+    if @user_all_posts_ids.include? @post.id or current_user.admin == true
       @post.destroy
       respond_to do |format|
         format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
